@@ -8,7 +8,7 @@ import {
   
   const initialState = {
     items: [
-        { _id: uuid(), date: "10/01/2009", name: "Brittney", amount: "5000" },
+      { _id: uuid(), date: "10/01/2009", name: "Brittney", amount: "5000" },
       { _id: uuid(), date: "10/01/2009", name: "Jenn", amount: "1050" },
       { _id: uuid(), date: "10/01/2009", name: "Vivian", amount: "500" },
       { _id: uuid(), date: "10/01/2009", name: "Speech", amount: "587" }
@@ -21,7 +21,7 @@ import {
       case GET_ITEMS:
         return {
           ...state,
-          items: action.payload,
+         
          
         };
       case DELETE_ITEM:

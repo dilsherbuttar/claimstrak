@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import { Container, Button } from "reactstrap";
 import uuid from "uuid";
+import { connect } from 'react-redux';
+import {getItems} from '../actions/itemAction';
+import PropTypes from 'prop-types';
 
 class ClaimsList extends Component {
-  state = {
-    items: [
-      { _id: uuid(), date: "10/01/2009", name: "Brittney", amount: "5000" },
-      { _id: uuid(), date: "10/01/2009", name: "Jenn", amount: "1050" },
-      { _id: uuid(), date: "10/01/2009", name: "Vivian", amount: "500" },
-      { _id: uuid(), date: "10/01/2009", name: "Speech", amount: "587" }
-    ]
-  };
+ 
+
+  componentDidMount() {
+      this.props.getItems();
+  }
+
+ 
 
   onDeleteClick = id => {
     this.props.deleteItem(id);
   };
 
   render() {
-    const { items } = this.state;
+    
+    const { items } = this.props.item;
     console.log(this.state);
     return (
       <Container>
@@ -60,5 +63,14 @@ class ClaimsList extends Component {
     );
   }
 }
+ClaimsList.propTypes = {
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
+  };
 
-export default ClaimsList;
+const mapStateToProps = state => ({
+    item: state.item
+})
+
+export default connect(mapStateToProps, {getItems})(ClaimsList);
