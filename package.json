@@ -1,0 +1,19 @@
+{
+  "name": "claimstrak",
+  "version": "1.0.0",
+  "description": "Insurance claims tracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dilsherbuttar/claimstrak.git"
+  },
+  "author": "Dilsher Buttar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dilsherbuttar/claimstrak/issues"
+  },
+  "homepage": "https://github.com/dilsherbuttar/claimstrak#readme"
+}
