@@ -1,24 +1,20 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   NavLink,
   Container
 } from "reactstrap";
-import PropTypes from "prop-types";
 
 class AppNavBar extends Component {
   state = {
     isOpen: false
   };
 
-  static propTypes = {
-    auth: PropTypes.object.isRequired
-  };
+
 
   toggle = () => {
     this.setState({
@@ -34,7 +30,7 @@ class AppNavBar extends Component {
             <NavbarBrand href="/">Claims</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav>
+              <Nav navbar>
                 <NavLink>link</NavLink>
               </Nav>
             </Collapse>
