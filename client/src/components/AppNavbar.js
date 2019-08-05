@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 import {
   Collapse,
   Navbar,
@@ -8,21 +8,41 @@ import {
   NavItem,
   NavLink,
   Container
-} from 'reactstrap';
+} from "reactstrap";
+import PropTypes from "prop-types";
 
 class AppNavBar extends Component {
-    state = {
-        isOpen: false
-    }
+  state = {
+    isOpen: false
+  };
 
-    render() {
-        return (
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
 
-        <div>
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
 
-        </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Navbar expand="sm" className="mb-5">
+          <Container>
+            <NavbarBrand href="/">Claims</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav>
+                <NavLink>link</NavLink>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
+      </div>
+    );
+  }
 }
 
 export default AppNavBar;
