@@ -15,11 +15,10 @@ router.get('/', (req, res) => {
 });
 
 
-router.post('/', auth, (req, res) => {
+router.post('/', (req, res) => {
   const newItem = new Item({
-    date: req.body.date,
     name: req.body.name,
-    amount: req.body.amount
+  
   });
 
   newItem.save().then(item => res.json(item));

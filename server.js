@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const config = require('config');
+// const config = require('./config/');
+const bodyParser = require('body-parser');
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
 
-const db = config.get('mongoURI');
+const db = require('./config/keys').mongoURI
 
 mongoose
   .connect(db, { 

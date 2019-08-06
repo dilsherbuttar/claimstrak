@@ -12,13 +12,12 @@ import {
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemAction";
 import PropTypes from "prop-types";
-import uuid from 'uuid'
 
 class ItemModal extends Component {
   state = {
     modal: false,
     name: "",
-    amount: ""
+ 
   };
 
   toggle = () => {
@@ -37,7 +36,7 @@ class ItemModal extends Component {
     e.preventDefault();
 
     const newItem = {
-      id: uuid(),
+     
       name: this.state.name,
       amount: this.state.amount
     };
