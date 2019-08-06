@@ -14,8 +14,6 @@ class AppNavBar extends Component {
     isOpen: false
   };
 
-
-
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -28,12 +26,6 @@ class AppNavBar extends Component {
         <Navbar expand="sm" className="mb-5">
           <Container>
             <NavbarBrand href="/">Claims</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav navbar>
-                <NavLink>link</NavLink>
-              </Nav>
-            </Collapse>
           </Container>
         </Navbar>
       </div>

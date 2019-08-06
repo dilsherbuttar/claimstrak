@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Container, Button } from "reactstrap";
-import uuid from "uuid";
 import { connect } from 'react-redux';
-import {getItems} from '../actions/itemAction';
+import {getItems, deleteItem} from '../actions/itemAction';
 import PropTypes from 'prop-types';
 
 class ClaimsList extends Component {
@@ -24,20 +23,7 @@ class ClaimsList extends Component {
     console.log(this.state);
     return (
       <Container>
-        <Button
-          style={{ marginBottom: "2rem" }}
-          onClick={() => {
-            const name = prompt("Enter claim details");
-            const amount = prompt("Enter amount");
-            if (name && amount) {
-              this.setState(state => ({
-                items: [...this.state.items, { _id: uuid(), name, amount }]
-              }));
-            }
-          }}
-        >
-          Add a claim
-        </Button>
+     
         <li>
           {items.map(({ _id, name, amount, date }) => (
             <ul key={_id}>
@@ -47,11 +33,7 @@ class ClaimsList extends Component {
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={() => {
-                    this.setState(state => ({
-                      items: state.items.filter(item => item._id !== _id)
-                    }));
-                  }}
+                  onClick={this.onDeleteClick.bind(this,_id)}
                 >
                   &times;
                 </Button>
@@ -73,4 +55,4 @@ const mapStateToProps = state => ({
     item: state.item
 })
 
-export default connect(mapStateToProps, {getItems})(ClaimsList);
+export default connect(mapStateToProps, {getItems, deleteItem})(ClaimsList);
