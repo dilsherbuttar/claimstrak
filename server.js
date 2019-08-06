@@ -5,6 +5,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 
+const items = require('./routes/api/Items')
+
 app.use(bodyParser.json());
 
 const db = require('./config/keys').mongoURI
@@ -16,6 +18,8 @@ mongoose
   })
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
+
+app.use('/api/items', items)  
 
 const port = process.env.PORT || 5000;
 
