@@ -1,13 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-// const config = require('./config/');
-const bodyParser = require('body-parser');
 const app = express();
 
 const items = require('./routes/api/Items')
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 const db = require('./config/keys').mongoURI
 
