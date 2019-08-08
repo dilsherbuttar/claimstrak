@@ -5,9 +5,11 @@ const app = express();
 
 // const items = require('./routes/api/Items')
 
+const db = config.get('mongoURI');
+
 app.use(express.json());
 
-const db = require('./config/keys').mongoURI
+// const db = require('./config/keys').mongoURI
 
 mongoose
   .connect(db, { 
