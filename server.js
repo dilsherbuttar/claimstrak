@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 
-const items = require('./routes/api/Items')
+// const items = require('./routes/api/Items')
 
 app.use(express.json());
 
@@ -17,7 +17,7 @@ mongoose
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-app.use('/api/items', items)  
+// app.use('/api/items', items)  
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
