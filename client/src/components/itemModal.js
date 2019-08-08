@@ -12,13 +12,21 @@ import {
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemAction";
 import PropTypes from "prop-types";
+import DatePicker from 'react-datepicker'
 
 class ItemModal extends Component {
   state = {
     modal: false,
     name: "",
- 
+    amount: "",
+    date: new Date()
   };
+
+  handleChange =(date) => {
+    this.setState({
+      date: date
+    });
+  }
 
   toggle = () => {
     this.setState({
@@ -27,29 +35,25 @@ class ItemModal extends Component {
   };
 
   onChange = e => {
-    
-      this.setState({ [e.target.name]: e.target.value });
-
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   onSubmit = e => {
     e.preventDefault();
 
     const newItem = {
-     
       name: this.state.name,
-      amount: this.state.amount
+      amount: this.state.amount,
+      date: this.state.date
     };
 
-    
     this.props.addItem(newItem);
 
-   
     this.toggle();
   };
 
-
   render() {
+    console.log(this.state)
     return (
       <div>
         <Button
@@ -80,14 +84,15 @@ class ItemModal extends Component {
                   placeholder="Add amount"
                   onChange={this.onChange}
                 />
-                <Button
-                color = "dark"
-                style = {{marginTop: "2rem"}}
-                block
-                >
-                    Add to List
-                </Button>
               </FormGroup>
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.handleChange}
+                  fixedHeight
+                />
+                <Button color="dark" style={{ marginTop: "2rem" }} block>
+                  Add to List
+                </Button>
             </Form>
           </ModalBody>
         </Modal>
@@ -102,5 +107,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {addItem}
+  { addItem }
 )(ItemModal);
