@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
   const newItem = new Item({
     name: req.body.name,
     amount: req.body.amount,
+    
     date: req.body.date
   
   });
