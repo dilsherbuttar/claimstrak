@@ -11,8 +11,7 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemAction";
-import PropTypes from "prop-types";
-import DatePicker from 'react-datepicker'
+import DatePicker from "react-date-picker";
 
 class ItemModal extends Component {
   state = {
@@ -22,11 +21,11 @@ class ItemModal extends Component {
     date: new Date()
   };
 
-  handleChange =(date) => {
+  handleChange = date => {
     this.setState({
       date: date
     });
-  }
+  };
 
   toggle = () => {
     this.setState({
@@ -40,11 +39,35 @@ class ItemModal extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    const dateFormatter = date => {
+      var monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
+      let day = date.getDate();
+      let monthIndex = date.getMonth();
+      let year = date.getFullYear();
+
+      return day + " " + monthNames[monthIndex] + " " + year;
+    };
+
+    let formattedDate = dateFormatter(this.state.date);
 
     const newItem = {
       name: this.state.name,
       amount: this.state.amount,
-      date: this.state.date
+      date: formattedDate
     };
 
     this.props.addItem(newItem);
@@ -53,12 +76,16 @@ class ItemModal extends Component {
   };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div>
         <Button
           color="dark"
-          style={{ marginBottom: "2rem" }}
+          style={{
+            marginBottom: "2rem",
+            marginLeft: "20rem",
+            position: "center"
+          }}
           onClick={this.toggle}
         >
           Add Claim
@@ -85,14 +112,15 @@ class ItemModal extends Component {
                   onChange={this.onChange}
                 />
               </FormGroup>
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.handleChange}
-                  fixedHeight
-                />
-                <Button color="dark" style={{ marginTop: "2rem" }} block>
-                  Add to List
-                </Button>
+              <DatePicker
+                selected={this.state.startDate}
+                value={this.state.date}
+                onChange={this.handleChange}
+                fixedHeight
+              />
+              <Button color="dark" style={{ marginTop: "2rem" }} block>
+                Add to List
+              </Button>
             </Form>
           </ModalBody>
         </Modal>

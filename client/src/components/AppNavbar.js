@@ -5,7 +5,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavLink,
   Container
 } from "reactstrap";
 
@@ -23,9 +22,14 @@ class AppNavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar expand="sm" className="mb-5">
+        <Navbar color='dark' dark expand='sm' className='mb-5'>
           <Container>
             <NavbarBrand href="/">Claims</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className='ml-auto' navbar>
+              </Nav>
+            </Collapse>
           </Container>
         </Navbar>
       </div>

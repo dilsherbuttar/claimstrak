@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Container, Button } from "reactstrap";
+import { Container, Button , ListGroup, ListGroupItem } from "reactstrap";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import {getItems, deleteItem} from '../actions/itemAction';
 import PropTypes from 'prop-types';
@@ -24,11 +25,18 @@ class ClaimsList extends Component {
     return (
       <Container>
      
-        <li>
+        
+        <ListGroup >
+        <TransitionGroup className='shopping-list'>
           {items.map(({ _id, name, amount, date }) => (
-            <ul key={_id}>
+             <CSSTransition key={_id} timeout={500} classNames='fade'>
+             <ListGroupItem style = {{display: "flex", justifyContent:"space-between"}}>
+             <span >
+
               ${amount} submitted for {name} on {date}
-              <span style = {{margin: '10px'}}>
+             </span>
+           
+            
                 <Button
                   className="remove-btn"
                   color="danger"
@@ -37,10 +45,13 @@ class ClaimsList extends Component {
                 >
                   &times;
                 </Button>
-              </span>
-            </ul>
+           
+           
+            </ListGroupItem>
+            </CSSTransition>
           ))}
-        </li>
+          </TransitionGroup>
+          </ListGroup>
       </Container>
     );
   }
