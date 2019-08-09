@@ -37,6 +37,27 @@ For the Docker container there would be a new folder created in /src which will 
 	EXPOSE 3001
 	CMD ["npm", "start"]
   ```
+## To run the app on your computer
+Clone the repository and run
+ ```bash
+ npm install
+  ```
+then to install the client 
+```bash
+ npm run client-install
+  ```
+
+to run the server
+
+```bash
+ npm run dev
+  ```
+[I'm an inline-style link with title](https://claimstracker.herokuapp.com/ "App v1.0")
+
+
+
+
+
 
 
 
