@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 // const config = require('config');
 
-const items = require('./routes/api/Items')
+// const items = require('./routes/api/Items')
 
 // const db = config.get('mongoURI');
 
