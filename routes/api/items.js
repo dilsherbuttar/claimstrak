@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 // Item Model
-const Item = require('../../models/Item');
+const Item = require('../../models/items');
 
 // @route   GET api/items
-// @desc    Get All Items
+// @desc    Get All Items`
 // @access  Public
 router.get('/', (req, res) => {
   Item.find()
