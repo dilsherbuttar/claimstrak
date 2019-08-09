@@ -2,15 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
-const config = require('config');
+// const config = require('config');
 
-// const items = require('./routes/api/Items')
+const items = require('./routes/api/Items')
 
-const db = config.get('mongoURI');
+// const db = config.get('mongoURI');
 
-app.use(express.json());
+// app.use(express.json());
 
-// const db = require('./config/keys').mongoURI
+const db = require('./config/keys').mongoURI
 
 mongoose
   .connect(db, { 
